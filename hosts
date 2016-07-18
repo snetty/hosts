@@ -1,0 +1,54 @@
+#!/bin/bash
+
+hosts="/etc/hosts"
+origin="hosts.origin"
+base="hosts.base"
+static_folder="static";
+
+build(){
+	# mv $hosts $hosts.bak
+	sort -u --output=$base $base
+
+	cat $origin $base $static_folder/*.hosts > $hosts
+}
+
+help_message () {
+        echo "Hosts Use: hosts [ options ]"
+        echo " Options:"
+        echo "  fetch url"
+        echo "  add url ip"
+        echo "  rm url ip"
+        echo "  read - outputs $hosts"
+        echo "  readbase - outputs custom hosts file ($base)"
+        echo "  help"
+        exit
+}
+
+if [[ "$1" == "" ]]; then
+	help_message
+else
+    if [[ "$1" == "help" ]]; then
+    	help_message;
+    	exit;
+    fi
+    if [[ "$1" == "add" ]]; then
+    	echo "adding $3 $2"
+    	echo "$3 $2" >> $base
+    	build
+   	fi
+    if [[ "$1" == "rm" ]]; then
+    	echo "removing $3 $2"
+    	cat $base | grep -v "$3 $2" >> $base
+    	build
+   	fi
+   	if [[ "$1" == "fetch" ]]; then
+    	cat $hosts | grep $2
+   	fi
+   	if [[ "$1" == "read" ]]; then
+    	cat $hosts
+   	fi
+   	if [[ "$1" == "readbase" ]]; then
+    	cat $base
+   	fi
+    exit
+fi
