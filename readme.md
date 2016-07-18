@@ -21,7 +21,7 @@ A custom hosts file manager.
     ```
 
 4. Add any existing custom mappings to hosts.base, this is where your mappings will be stored when you add/remove them through the script.
-5. Add static files to ``static/somename.hosts`` and they will be included untouched
+5. Add static files to ``~/path/static/somename.hosts`` and they will be included untouched
 
 #### Usage
 
