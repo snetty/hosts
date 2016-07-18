@@ -4,8 +4,9 @@ A custom hosts file manager.
 
 #### Setup
 
-1. Make the script executable ``chmod +x ~/path/hosts``
-2. Add the start/default part of your current /etc/hosts file to hosts.origin, it will probably look something like this:
+1. Clone from github ``git clone https://github.com/snetty/hosts.git``
+2. Make the script executable ``chmod +x ~/path/hosts``
+3. Add the start/default part of your current /etc/hosts file to hosts.origin, it will probably look something like this:
     
     ```#
     # Host Database
@@ -19,8 +20,8 @@ A custom hosts file manager.
     fe80::1%lo0		localhost
     ```
 
-3. Add any existing custom mappings to hosts.base, this is where your mappings will be stored when you add/remove them through the script.
-4. Add static files to ``static/somename.hosts`` and they will be included untouched
+4. Add any existing custom mappings to hosts.base, this is where your mappings will be stored when you add/remove them through the script.
+5. Add static files to ``static/somename.hosts`` and they will be included untouched
 
 #### Usage
 
