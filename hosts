@@ -1,9 +1,18 @@
 #!/bin/bash
 
 hosts="/etc/hosts"
-origin="hosts.origin"
-base="hosts.base"
-static_folder="static";
+path="$(ls -d ~)/.hosts"
+
+if [ ! -d $path ]; then
+  mkdir $path
+  mkdir "$path/static"
+  touch "$path/hosts.origin"
+  touch "$path/hosts.base"
+fi
+
+origin="$path/hosts.origin"
+base="$path/hosts.base"
+static_folder="$path/static"
 
 build(){
 	# mv $hosts $hosts.bak
