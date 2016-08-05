@@ -47,7 +47,8 @@ else
    	fi
     if [[ "$1" == "rm" ]]; then
     	echo "removing $3 $2"
-    	cat $base | grep -v "$3 $2" >> $base
+    	cat $base | grep -v "$3 $2" > $base.tmp
+      mv $base.tmp $base
     	build
    	fi
    	if [[ "$1" == "fetch" ]]; then
